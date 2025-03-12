@@ -3,6 +3,8 @@ import logging
 import socket
 from select import select
 
+
+logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 
