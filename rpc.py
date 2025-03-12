@@ -9,11 +9,7 @@ logger = logging.getLogger(__name__)
 class RPCServer:
     def __init__(self, instance, port=0):
         self._instance = instance
-        self._methods = {}
-        for member_name in dir(instance):
-            member = getattr(instance, member_name)
-            if callable(member):
-                self._methods[member_name] = member
+        self._methods =  {k : v for k in dir(self._instance) for v in [getattr(self._instance, k)] if callable(getattr(self._instance, k))}
         self._port = port
         self._server_socket = None
         self._sockets = []
